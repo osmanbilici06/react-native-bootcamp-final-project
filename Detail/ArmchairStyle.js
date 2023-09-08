@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   availableSeat: {
-    backgroundColor: "lightgreen",
+    backgroundColor: "red",
   },
   selectedSeat: {
     backgroundColor: "lightblue",

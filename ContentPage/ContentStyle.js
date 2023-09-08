@@ -5,6 +5,7 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 4,
+    
   },
   styleContainer: {
     flexDirection: "row",
@@ -55,16 +56,16 @@ export default StyleSheet.create({
     borderRadius:100,
   },
   Input:{
-    backgroundColor: "#C9CCCD", 
+    backgroundColor: "#EAEBED", 
     width: "100%", 
     height: 30,
-    borderRadius:4
+ 
   },
   textButton:{
     alignSelf:'flex-start',
     fontWeight:'bold',
     color:'red',
-    borderRadius:24
+  
   }
 
 });

@@ -5,6 +5,7 @@ const DetayStyle = StyleSheet.create({
   container: {
     flex: 1,
     gap: 10,
+    
   
   },
   swiperContainer: {
@@ -22,7 +23,7 @@ const DetayStyle = StyleSheet.create({
     alignSelf: "flex-start",
   },
   seatList: {
-    backgroundColor: '#BABCBD',
+    
     flexDirection: "row",
     justifyContent:'space-around'
 
@@ -42,6 +43,9 @@ const DetayStyle = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+    backgroundColor:'#EAEBED',
+    height:'100%',
+    width:'100%'
   },
   button: {
     margin: 2,
@@ -67,6 +71,7 @@ const DetayStyle = StyleSheet.create({
   youtubeButton: {
     backgroundColor: '#FF0000',
   },
+  
 });
 
 export default DetayStyle;

@@ -13,6 +13,7 @@ import MapView, { Marker } from "react-native-maps";
 import DetailStyle from "./DetailStyle";
 import Seat from "./ArmchairStyle.js"; 
 import Icon from 'react-native-vector-icons/FontAwesome'
+import data from "../dummy/data";
 
 const ConcertDetailScreen = (props) => {
   const { params: item } = props.route;
