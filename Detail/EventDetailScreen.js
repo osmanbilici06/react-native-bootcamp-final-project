@@ -1,12 +1,36 @@
 import React from "react";
-import { View, StyleSheet, Dimensions, Image, Text, title } from "react-native";
+import { View, StyleSheet, Dimensions, Image, Text, title, ScrollView } from "react-native";
 import Swiper from "react-native-swiper";
 import MapView, { Marker } from "react-native-maps";
 import DetailStyle from "./DetailStyle";
+import Seat from "./ArmchairStyle.js"; 
 
 const EventDetailScreen = (props) => {
   const { params: item } = props.route;
+
+ 
+  const seatData = [
+   
+    { seatNumber: "A1", price: 50 },
+    { seatNumber: "A2", price: 150 },
+    { seatNumber: "A3", price: 250 },
+    { seatNumber: "A3", price: 250 },
+    { seatNumber: "A3", price: 250 },
+    
+  ];
+
+  const handleSeatSelect = (seatNumber) => {
+    
+    if (selectedSeats.includes(seatNumber)) {
+      setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
+    } else {
+     
+      setSelectedSeats([...selectedSeats, seatNumber]);
+    }
+  };
   return (
+    <ScrollView>
+        
     <View style={DetailStyle.container}>
       {item.images && (
         <View style={DetailStyle.swiperContainer}>
@@ -26,7 +50,20 @@ const EventDetailScreen = (props) => {
             ))}
           </Swiper>
         </View>
+        
       )}
+      
+      <View style={DetailStyle.seatList}>
+        {seatData.map((seat, index) => (
+          <Seat
+            key={index}
+            seatNumber={seat.seatNumber}
+            price={seat.price}
+            selected={selectedSeats.includes(seat.seatNumber)}
+            onSelect={handleSeatSelect}
+          />
+        ))}
+      </View>
       <Text>
         <Text style={DetailStyle.text}>Açıklama: </Text> {item.description}
       </Text>
@@ -41,7 +78,9 @@ const EventDetailScreen = (props) => {
           description="Ankara"
         />
       </MapView>
+      
     </View>
+    </ScrollView>
   );
 };
 

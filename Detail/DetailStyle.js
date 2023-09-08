@@ -32,10 +32,40 @@ const DetayStyle = StyleSheet.create({
     justifyContent: "end",
     alignItems: "end",
     width: Dimensions.get("window").width,
+    width:'100%',
+    height:300
   },
   text: {
     fontWeight: "bold",
     fontSize: 17,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  button: {
+    margin: 2,
+    padding: 5,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 40,
+    height: 40,
+  },
+  facebookButton: {
+    backgroundColor: '#3b5998',
+  },
+  twitterButton: {
+    backgroundColor: '#1da1f2',
+  },
+  googleButton: {
+    backgroundColor: '#DB4437',
+  },
+  linkedinButton: {
+    backgroundColor: '#0077B5',
+  },
+  youtubeButton: {
+    backgroundColor: '#FF0000',
   },
 });
 

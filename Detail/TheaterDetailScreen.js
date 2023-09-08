@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import {
   View,
-  StyleSheet,
   Dimensions,
   Image,
   Text,
   title,
   ScrollView,
+  TouchableOpacity
 } from "react-native";
 import Swiper from "react-native-swiper";
 import MapView, { Marker } from "react-native-maps";
 import DetailStyle from "./DetailStyle";
 import Seat from "./ArmchairStyle.js"; 
+import Icon from 'react-native-vector-icons/FontAwesome'
 
-const TheaterDetailScreen = (props) => {
+const ConcertDetailScreen = (props) => {
   const { params: item } = props.route;
   const [selectedSeats, setSelectedSeats] = useState([]); 
+
 
 
   const seatData = [
@@ -27,7 +29,28 @@ const TheaterDetailScreen = (props) => {
     { seatNumber: "A3", price: 250 },
     
   ];
-
+  const handlePress = (platform) => {
+  
+    switch (platform) {
+      case 'facebook':
+       
+        break;
+      case 'twitter':
+      
+        break;
+      case 'google':
+        
+        break;
+      case 'linkedin':
+       
+        break;
+      case 'youtube':
+     
+        break;
+      default:
+        break;
+    }
+  };
 
   const handleSeatSelect = (seatNumber) => {
     
@@ -39,8 +62,11 @@ const TheaterDetailScreen = (props) => {
     }
   };
 
+  
+
   return (
-   <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+   <ScrollView>
+   
     <View style={DetailStyle.container}>
       
       {item.images && (
@@ -63,7 +89,7 @@ const TheaterDetailScreen = (props) => {
         </View>
       )}
       <Text>
-        <Text style={DetailStyle.text}>Açıklama: </Text> {item.description}
+        <Text style={DetailStyle.text}>Açıklamas: </Text> {item.description}
       </Text>
 
     
@@ -79,6 +105,7 @@ const TheaterDetailScreen = (props) => {
         ))}
       </View>
 
+
       <MapView style={DetailStyle.map} initialRegion={item.place.location}>
         <Marker
           coordinate={{
@@ -89,9 +116,45 @@ const TheaterDetailScreen = (props) => {
           description="Ankara"
         />
       </MapView>
+      
+      <View style={DetailStyle.buttonContainer}>
+      <TouchableOpacity
+        style={[DetailStyle.button, DetailStyle.facebookButton]}
+        onPress={() => handlePress('facebook')}
+      >
+        <Icon name="facebook" size={30} color="white" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[DetailStyle.button, DetailStyle.twitterButton]}
+        onPress={() => handlePress('twitter')}
+      >
+        <Icon name="twitter" size={30} color="white" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[DetailStyle.button, DetailStyle.googleButton]}
+        onPress={() => handlePress('google')}
+      >
+        <Icon name="google" size={30} color="white" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[DetailStyle.button, DetailStyle.linkedinButton]}
+        onPress={() => handlePress('linkedin')}
+      >
+        <Icon name="linkedin" size={30} color="white" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[DetailStyle.button, DetailStyle.youtubeButton]}
+        onPress={() => handlePress('youtube')}
+      >
+        <Icon name="youtube" size={30} color="white" />
+      </TouchableOpacity>
     </View>
+     
+    </View>
+    
+    
     </ScrollView>
   );
 };
 
-export default TheaterDetailScreen;
+export default ConcertDetailScreen;

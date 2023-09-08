@@ -1,20 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import LoginPage from "./Login/LoginPage";
+import ContentPage from "./ContentPage/Content";
 
-export default function App() {
+import EventDetailScreen from "./Detail/EventDetailScreen";
+import TheaterDetailScreen from "./Detail/TheaterDetailScreen";
+import ConcertDetailScreen from "./Detail/ConcertDetailScreen";
+import PastScreen from "./Past/PastScreen";
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="welcom"
+          component={LoginPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="İçerik" component={ContentPage} />
+        <Stack.Screen
+          name="EventDetayScreen"
+          component={EventDetailScreen}
+          options={{ title: "Etkinlik Detayları" }}
+        />
+        <Stack.Screen
+          name="TheaterDetailScreen"
+          component={TheaterDetailScreen}
+          options={{ title: "Tiyatro Detayları" }}
+        />
+        <Stack.Screen
+          name="ConcertDetailScreen"
+          component={ConcertDetailScreen}
+          options={{ title: "Konser Detayları" }}
+        />
+        <Stack.Screen
+          name="goToPastScreen"
+          component={PastScreen}
+          options={{ title: "Kaçırdıklarınız" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

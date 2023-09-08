@@ -1,53 +1,159 @@
-import React from "react";
-import { View, StyleSheet, Dimensions, Image, Text, title } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Dimensions,
+  Image,
+  Text,
+  title,
+  ScrollView,
+  TouchableOpacity
+} from "react-native";
 import Swiper from "react-native-swiper";
 import MapView, { Marker } from "react-native-maps";
+import DetailStyle from "./DetailStyle";
+import Seat from "./ArmchairStyle.js"; 
+import Icon from 'react-native-vector-icons/FontAwesome'
 
-import DetayStyle from "./DetayStyle";
+const ConcertDetailScreen = (props) => {
+  const { params: item } = props.route;
+  const [selectedSeats, setSelectedSeats] = useState([]); 
 
-const ConcertDetailScreen = () => {
-  const images = [
-    "https://www.rudaw.net/s3/rudaw.net/ContentFiles/730426Image1.jpg?version=5110496",
-    "https://s3.fr-par.scw.cloud/fra-susma24-tr/2022/07/mabelkarakol-wp.png",
-    "https://cdn.alemfm.com/Documents/alem_fm/images/2016/02/01/9f72ad56-9bf9-49d6-99bf-484bd210f169.jpg",
+
+
+  const seatData = [
+   
+    { seatNumber: "A1", price: 50 },
+    { seatNumber: "A2", price: 150 },
+    { seatNumber: "A3", price: 250 },
+    { seatNumber: "A3", price: 250 },
+    { seatNumber: "A3", price: 250 },
+    
   ];
+  const handlePress = (platform) => {
+  
+    switch (platform) {
+      case 'facebook':
+       
+        break;
+      case 'twitter':
+      
+        break;
+      case 'google':
+        
+        break;
+      case 'linkedin':
+       
+        break;
+      case 'youtube':
+     
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleSeatSelect = (seatNumber) => {
+    
+    if (selectedSeats.includes(seatNumber)) {
+      setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
+    } else {
+     
+      setSelectedSeats([...selectedSeats, seatNumber]);
+    }
+  };
+
+  
 
   return (
-    <View style={DetayStyle.container}>
-      <View style={DetayStyle.swiperContainer}>
-        <Swiper showsButtons={false} height={200} width={Dimensions.get("window").width}>
-          {images.map((image, index) => (
-            <View key={index} style={DetayStyle.swiperSlide}>
-              <Image source={{ uri: image }} style={DetayStyle.image}  resizeMode="cover" />
-            </View>
-          ))}
-        </Swiper>
-      </View>
-      <Text><Text style={DetayStyle.text}>Açıklama: </Text> Bugüne kadar yayınladığı albümleriyle yeni jenerasyonun Türk pop/rock müziğinin 
-        en önemli temsilcilerinden biri haline gelen şarkı yazarı, besteci ve müzisyen Mabel Matiz, sevenleriyle buluşuyor. 
-        Kendi adını taşıyan ilk albümü yayınlanır yayınlanmaz çok geniş bir kitleye ulaşan Mabel Matiz, dinleyicileri ve Türkiye’nin önde gelen müzik eleştirmenleri tarafından ülkemizin en fazla gelecek vadeden genç müzisyenleri arasında gösterilmiştir. 2011 yılında yapılan değerlendirmelerde ilk albümü, yılın en iyi ilk 10 albümü arasında gösterilmiş, albümde yer alan “Arafta”, “Söylese O Ben Söyleyemem”, “Kül Hece”, “Filler 
-        ve Çimen” ve “Barışırsa Ruhum” adlı şarkılara çekilen video klipler büyük beğeni toplamıştır.</Text>
+   <ScrollView>
+   
+    <View style={DetailStyle.container}>
+      
+      {item.images && (
+        <View style={DetailStyle.swiperContainer}>
+          <Swiper
+            showsButtons={false}
+            height={200}
+            width={Dimensions.get("window").width}
+          >
+            {item.images.map((image, index) => (
+              <View key={index} style={DetailStyle.swiperSlide}>
+                <Image
+                  source={{ uri: image }}
+                  style={DetailStyle.image}
+                  resizeMode="cover"
+                />
+              </View>
+            ))}
+          </Swiper>
+        </View>
+      )}
+      <Text>
+        <Text style={DetailStyle.text}>Açıklamas: </Text> {item.description}
+      </Text>
 
-      <MapView
-        style={DetayStyle.map}
-        initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-          
-        }}
-      >
+    
+      <View style={DetailStyle.seatList}>
+        {seatData.map((seat, index) => (
+          <Seat
+            key={index}
+            seatNumber={seat.seatNumber}
+            price={seat.price}
+            selected={selectedSeats.includes(seat.seatNumber)}
+            onSelect={handleSeatSelect}
+          />
+        ))}
+      </View>
+
+
+      <MapView style={DetailStyle.map} initialRegion={item.place.location}>
         <Marker
           coordinate={{
-            latitude: 37.78825,
-            longitude: -122.4324,
+            latitude: item.place.location.latitude,
+            longitude: item.place.location.longitude,
           }}
           title="Konser"
           description="Ankara"
         />
       </MapView>
+      
+      <View style={DetailStyle.buttonContainer}>
+      <TouchableOpacity
+        style={[DetailStyle.button, DetailStyle.facebookButton]}
+        onPress={() => handlePress('facebook')}
+      >
+        <Icon name="facebook" size={30} color="white" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[DetailStyle.button, DetailStyle.twitterButton]}
+        onPress={() => handlePress('twitter')}
+      >
+        <Icon name="twitter" size={30} color="white" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[DetailStyle.button, DetailStyle.googleButton]}
+        onPress={() => handlePress('google')}
+      >
+        <Icon name="google" size={30} color="white" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[DetailStyle.button, DetailStyle.linkedinButton]}
+        onPress={() => handlePress('linkedin')}
+      >
+        <Icon name="linkedin" size={30} color="white" />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[DetailStyle.button, DetailStyle.youtubeButton]}
+        onPress={() => handlePress('youtube')}
+      >
+        <Icon name="youtube" size={30} color="white" />
+      </TouchableOpacity>
     </View>
+     
+    </View>
+    
+    
+    </ScrollView>
   );
 };
 
