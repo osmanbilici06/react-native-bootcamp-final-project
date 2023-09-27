@@ -1,38 +1,41 @@
-Tech Career fest is a large organization worldwide 
+# Tech Career Fest
 
-[Check out the live example.](https://github.com/osmanbilici06/react-native-bootcamp-final-project)
+Tech Career Fest is a global organization dedicated to tech-related events.
 
- General Features
+## General Features
 
-- Ability to search by city
-- Ability to search by the type you want
-- Ability to view old events
+- Search for events by city
+- Filter events by type
+- Browse past events
 
-Some images from my project
+## Screenshots
 
-Home page
+### Home Page
 
-There is a login button here, it does not require any password, there is a cover page, there is a title at the top.
+![Home Page](https://github-production-user-asset-6210df.s3.amazonaws.com/85305798/270920540-d47bd046-52ec-4054-9ee4-3edff69ed61f.png)
 
-![Project](https://github-production-user-asset-6210df.s3.amazonaws.com/85305798/270920540-d47bd046-52ec-4054-9ee4-3edff69ed61f.png)
+The home page features a login button, no password required. It includes a cover page with a title at the top.
 
-My content page
+### Content Page
 
-On this page, it is possible to see the events, search bar, old detail buttons and events we missed.
+![Content Page](https://github-production-user-asset-6210df.s3.amazonaws.com/85305798/270925097-9415ae4e-c7e9-4256-a863-8be2ba353c39.png)
 
-![Project1](https://github-production-user-asset-6210df.s3.amazonaws.com/85305798/270925097-9415ae4e-c7e9-4256-a863-8be2ba353c39.png)
+On this page, you can view events, use the search bar, access details of past events, and explore events you might have missed.
 
-Content of events we missed
-![Project2](https://github.com/osmanbilici06/osmanbilici06/assets/85305798/be35cc3d-a3ee-414b-a000-1b05f4af08ad)
+### Missed Events
 
-Detail page
+![Missed Events](https://github.com/osmanbilici06/osmanbilici06/assets/85305798/be35cc3d-a3ee-414b-a000-1b05f4af08ad)
 
-gives us information about the content of that activity
+This section shows the content of events that were missed.
 
-![Project3]https://github.com/osmanbilici06/osmanbilici06/assets/85305798/3e696280-70ff-492c-9ff8-910eca602549
+### Detail Page
 
-## Technologies
+![Detail Page](https://github.com/osmanbilici06/osmanbilici06/assets/85305798/3e696280-70ff-492c-9ff8-910eca602549)
 
-- Javascript
-- React-native
-- css
+The detail page provides information about the selected event.
+
+## Technologies Used
+
+- JavaScript
+- React Native
+- CSS
